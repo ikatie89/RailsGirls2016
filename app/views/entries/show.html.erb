@@ -1,0 +1,16 @@
+<div>
+<%= image_tag(@entry.photo_url, width: 300) if @entry.photo.present? %>
+<h2><%= @entry.title %></h2>
+  <p><%= @entry.date %></p>
+  <p><%= @entry.contents %></p>
+  <%if @next%>
+  <p><%= link_to("Następna strona", entry_path(@next)) %></p>
+  <%end %>
+    <%if @back%>
+  <p><%= link_to("Poprzednia strona", entry_path(@back)) %></p> 
+  <%end %>
+  <p><%= link_to("Back to all entries", entries_path) %></p>
+  <p><%= link_to("Edit this entry", edit_entry_path(@entry)) %></p>
+  <%= link_to 'Delete entry',  entry_path(@entry),
+    data: { confirm: 'Are you sure?' }, method: :delete %>
+    </div>
